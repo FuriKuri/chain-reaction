@@ -25,7 +25,6 @@ func main() {
 		fmt.Println("Do cleanup")
 		removeAllImageContainer(cli)
 	} else {
-
 		time.Sleep(5 * time.Second)
 		stopPrevContainer(counter(), cli)
 		time.Sleep(5 * time.Second)
