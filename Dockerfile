@@ -1,4 +1,7 @@
-FROM golang:1.7.0
+FROM golang:1.7.0-alpine
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache git
 
 RUN go get github.com/docker/engine-api/client
 RUN go get github.com/docker/engine-api/types
