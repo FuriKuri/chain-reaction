@@ -30,13 +30,16 @@ func main() {
 		stopPrevContainer(counter(), cli)
 		time.Sleep(5 * time.Second)
 		startChainContainer(counter(), cli)
-
 		time.Sleep(100 * time.Second)
 	}
 
 }
 
 func startChainContainer(counter int, cli *client.Client) {
+	if counter == 0 {
+		time.Sleep(10 * time.Second)
+		removeSelf(counter, cli)
+	}
 	binds := []string{
 		"/var/run/docker.sock:/var/run/docker.sock",
 	}
@@ -55,6 +58,21 @@ func startChainContainer(counter int, cli *client.Client) {
 
 	if err2 != nil {
 		panic(err2)
+	}
+}
+
+func removeSelf(counter int, cli *client.Client) {
+	containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{All: true})
+	if err != nil {
+		panic(err)
+	}
+
+	for _, c := range containers {
+		if c.Image == imageName {
+			if c.Names[0] == "/chain-reaction-"+strconv.Itoa(counter) {
+				removeContainer(c, cli)
+			}
+		}
 	}
 }
 

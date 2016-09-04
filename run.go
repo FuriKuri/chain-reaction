@@ -17,7 +17,7 @@ func cleanUp() bool {
 }
 
 func counter() int {
-	i, err := strconv.Atoi(getArgParameter("counter", "100"))
+	i, err := strconv.Atoi(getArgParameter("counter", "10"))
 	if err != nil {
 		log.Fatal(err)
 	}
