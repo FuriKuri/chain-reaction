@@ -1,5 +1,14 @@
 # chain-reaction
+
+Simple docker image, which will cause a chain reaction.
+
+## What will happend
+
+The first container will start a new container form the same image with the name ```chain-reaction-10```. This container will remove the previous one and start a new container ```chain-reaction-9``` and so on ...
+The last container ```chain-reaction-0``` will remove itself.
+
 ## Usage
+
 Start the first container.
 ```
 $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock  furikuri/chain-reaction
@@ -15,11 +24,12 @@ CONTAINER ID        IMAGE                     COMMAND                  CREATED  
 ```
 
 ### Cleanup
+
 Remove all containers with based on this image:
 ```
 docker run -v /var/run/docker.sock:/var/run/docker.sock  furikuri/chain-reaction --cleanup
 ```
 
-## What will happend
-The first container will start a new container form the same image with the name ```chain-reaction-10```. This container will remove the previous one and start a new container ```chain-reaction-9``` and so on ...
-The last container ```chain-reaction-0``` will remove itself.
+## License
+
+MIT
