@@ -16,7 +16,7 @@ $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock  furikuri/chain-rea
 You can observe the behavior with:
 ```
 $ watch 'docker ps'
-Every 2,0s: docker ps                                                                                                                                                Sun Sep  4 10:31:36 2016
+Every 2,0s: docker ps                                                                                                                                   
 
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS                  PORTS               NAMES
 351e6bb9edc5        furikuri/chain-reaction   "/app/main --counter "   2 seconds ago       Up Less than a second   3000/tcp            chain-reaction-72
