@@ -1,4 +1,4 @@
-FROM golang:1.7.0-alpine
+FROM golang:1.7.0
 
 RUN go get github.com/docker/engine-api/client
 RUN go get github.com/docker/engine-api/types
